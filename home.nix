@@ -20,9 +20,14 @@
 
 		# editor
 		emacs
+    wqy_zenhei
 
 		# browser
-		arandr
+    # google-chrome
+    vivaldi
+
+    # display
+		# arandr
 	
 	];
 

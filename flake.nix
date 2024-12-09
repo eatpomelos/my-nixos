@@ -4,6 +4,7 @@
   # Inputs
   inputs = {
   	 nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+     # wezterm.url = "github:wez/wezterm?dir=nix";
 
 	home-manager = {
 		url = "github:nix-community/home-manager/release-24.11";
@@ -16,6 +17,11 @@
 	nixosConfigurations = {
 		nixos = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
+      # 将input向下传递
+      specialArgs = {
+        inherit inputs;
+      };
+
 			modules = [
 				./configuration.nix
 				home-manager.nixosModules.home-manager
