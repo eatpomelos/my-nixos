@@ -48,6 +48,18 @@
   # grub auto add
   boot.loader.grub.useOSProber = true;
 
+
+  # 设置nix镜像保存个数
+  boot.loader.systemd-boot.configurationLimit = 15;
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 2w";
+  };
+ 
+  nix.settings.auto-optimise-store = true;
+  
   # Enable the KDE Plasma Desktop Environment.
   # services.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
@@ -122,6 +134,12 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+   # Enable Bluetooth
+ hardware.bluetooth.enable = true;
+ hardware.bluetooth.powerOnBoot = false;
+
+ services.blueman.enable = true;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -135,8 +153,12 @@
      # desktop
      waybar
      hyprpaper
+     mpvpaper
+     hyprlock
      mako
      tofi
+
+     overskride
   ];
 
   environment.variables.EDITOR = "vim";
@@ -163,6 +185,7 @@
  programs.thunar = {
    enable = true;
  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
