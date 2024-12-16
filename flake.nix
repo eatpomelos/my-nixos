@@ -13,8 +13,8 @@
 	};
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ...}: let
-    userName = "spikely"
+  outputs = { nixpkgs, home-manager, ...} @inputs: let
+    userName = "spikely";
     in {
 	nixosConfigurations = {
 		nixos = nixpkgs.lib.nixosSystem {
@@ -32,6 +32,12 @@
 					home-manager.useUserPackages= true;
 					home-manager.users.${userName}= import ./home/default.nix;
           home-manager.backupFileExtension = "hm.bak";
+
+          # Optionally, use home-manager.extraSpecialArgs to pass
+          # arguments to home.nix
+          home-manager.extraSpecialArgs = {
+            inherit inputs userName;
+          };
 				}
 			];
 		};
