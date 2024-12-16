@@ -13,7 +13,9 @@
 	};
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ...}: {
+  outputs = inputs@{ nixpkgs, home-manager, ...}: let
+    userName = "spikely"
+    in {
 	nixosConfigurations = {
 		nixos = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
@@ -28,8 +30,8 @@
 				{
 					home-manager.useGlobalPkgs = true;
 					home-manager.useUserPackages= true;
-
-					home-manager.users.spikely = import ./home.nix;
+					home-manager.users.${userName}= import ./home/default.nix;
+          home-manager.backupFileExtension = "hm.bak";
 				}
 			];
 		};

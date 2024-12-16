@@ -11,7 +11,7 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -45,9 +45,14 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # grub auto add
-  boot.loader.grub.useOSProber = true;
 
+  # grub auto add
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev";
+    efiSupport = true;
+    useOSProber = true;
+  };
 
   # 设置nix镜像保存个数
   boot.loader.systemd-boot.configurationLimit = 15;
@@ -144,23 +149,16 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     git
+     # git
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
      kitty
      # inputs.wezterm.packages.${pkgs.system}.default
+     gnumake
      
-     # desktop
-     waybar
-     hyprpaper
-     mpvpaper
-     hyprlock
-     mako
-     tofi
-
      overskride
   ];
-
+ 
   environment.variables.EDITOR = "vim";
 
   # Enable Hyprland
