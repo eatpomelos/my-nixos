@@ -28,10 +28,10 @@
       line_break.disabled = true;
     };
   };
+
   # 安装一些基础的包
  	home.packages = with pkgs;[
 		neofetch
-    mlocate
     
 		# utils	
 		jq

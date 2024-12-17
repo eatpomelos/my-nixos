@@ -144,6 +144,15 @@
  hardware.bluetooth.powerOnBoot = false;
 
  services.blueman.enable = true;
+ 
+ # locate
+ services.locate = {
+   enable = true;
+   package = pkgs.mlocate;
+   interval = "hourly";
+ };
+
+
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # List packages installed in system profile. To search, run:
@@ -177,6 +186,11 @@
 		rime-data
 		fcitx5-gtk
 		fcitx5-rime
+    
+    # icon fonts
+    material-design-icons
+    font-awesome
+
 	];
  };
 

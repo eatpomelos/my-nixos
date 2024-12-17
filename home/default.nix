@@ -1,4 +1,4 @@
-{userName, ...}: {
+{ userName, ...}: {
   imports = [
     ./base.nix
     ./shell.nix
