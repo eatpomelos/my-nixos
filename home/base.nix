@@ -29,6 +29,7 @@
     };
   };
 
+    
   # 安装一些基础的包
  	home.packages = with pkgs;[
 		neofetch

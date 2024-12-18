@@ -128,6 +128,21 @@
   programs.regreet = {
     enable = true;
     package = pkgs.greetd.regreet;
+    settings = {
+      backgroud = {
+        path = "/home/spikely/spk/my-nixos/home/desktop/greetd.png";
+        fit = "Fill";
+      };
+      GTK = {
+        cursor_theme_name = "Adwaita";
+        font_name = "Cantarell 16";
+        icon_theme_name = "Adwaita";
+        theme_name = "Adwaita";
+      };
+      appearance = {
+        greeting_msg = "Welcome back spikely!";
+      };
+    };
   };
 
   programs.clash-verge = {
@@ -166,6 +181,10 @@
      gnumake
      
      overskride
+         
+    # icon fonts
+    material-design-icons
+    font-awesome
   ];
  
   environment.variables.EDITOR = "vim";
@@ -186,11 +205,6 @@
 		rime-data
 		fcitx5-gtk
 		fcitx5-rime
-    
-    # icon fonts
-    material-design-icons
-    font-awesome
-
 	];
  };
 
