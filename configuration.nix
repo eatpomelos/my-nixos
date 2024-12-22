@@ -51,7 +51,8 @@
     device = "nodev";
     efiSupport = true;
     useOSProber = true;
-    splashImage = ./home/desktop/nixos.jpg;
+    fontSize = 16;
+    theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
   };
 
   # 设置nix镜像保存个数
@@ -130,7 +131,7 @@
     package = pkgs.greetd.regreet;
     settings = {
       backgroud = {
-        path = "/home/spikely/spk/my-nixos/home/desktop/greetd.png";
+        path = "/home/spikely/spk/my-nixos/home/desktop/lock.png";
         fit = "Fill";
       };
       GTK = {
@@ -165,6 +166,7 @@
    enable = true;
    package = pkgs.mlocate;
    interval = "hourly";
+   localuser = null;
  };
 
 

@@ -15,6 +15,7 @@ in {
     # hyprpaper
     mpvpaper
     hyprlock
+    hypridle
     mako
     tofi
 	];
