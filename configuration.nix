@@ -45,13 +45,13 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
   # grub auto add
   boot.loader.grub = {
     enable = true;
     device = "nodev";
     efiSupport = true;
     useOSProber = true;
+    splashImage = ./home/desktop/nixos.jpg;
   };
 
   # 设置nix镜像保存个数
