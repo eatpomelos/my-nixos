@@ -45,14 +45,17 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # grub auto add
+  nixpkgs.config.packageOverrides = pkgs: {
+    sleek-grub-theme = pkgs.sleek-grub-theme.override {withBanner = "Hello Spikely!";  withStyle = "bigSur"; };
+  };
+
   boot.loader.grub = {
     enable = true;
     device = "nodev";
     efiSupport = true;
     useOSProber = true;
     fontSize = 16;
-    theme = "${pkgs.libsForQt5.breeze-grub}/grub/themes/breeze";
+    theme = "${pkgs.sleek-grub-theme}";
   };
 
   # 设置nix镜像保存个数
@@ -178,7 +181,6 @@
      # git
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
-     kitty
      # inputs.wezterm.packages.${pkgs.system}.default
      gnumake
      

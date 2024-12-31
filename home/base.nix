@@ -33,10 +33,11 @@
   # 安装一些基础的包
  	home.packages = with pkgs;[
 		neofetch
+    # 文泉驿字体，后面的终端以及emacs都会用到
+    wqy_zenhei
     
 		# utils	
 		jq
-		fzf
 
 		# browser
     # google-chrome
