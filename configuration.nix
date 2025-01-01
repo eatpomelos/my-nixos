@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -128,22 +128,42 @@
 
   # Install firefox.
   # programs.firefox.enable = true;
+  # Enable Hyprland
+  programs.hyprland = {
+    enable = true;
+    package = pkgs.hyprland;
+    xwayland.enable = true;
+  };
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = let
+        regreet = "${lib.getExe pkgs.greetd.regreet}";
+      in {
+        command = "${pkgs.hyprland}/bin/Hyprland --config ./home/desktop/dotfile/hypr/greetd-config";
+        user = "greeter";
+      };
+    };
+  };
 
   programs.regreet = {
     enable = true;
     package = pkgs.greetd.regreet;
+    # theme.package = pkgs.gnome-themes-extra;
+    # theme.name = "Adwaita";
     settings = {
-      backgroud = {
+      backgroud = lib.mkForce {
         path = "/home/spikely/spk/my-nixos/home/desktop/lock.png";
         fit = "Fill";
       };
-      GTK = {
+      GTK = lib.mkForce {
         cursor_theme_name = "Adwaita";
         font_name = "Cantarell 16";
         icon_theme_name = "Adwaita";
         theme_name = "Adwaita";
       };
-      appearance = {
+      appearance = lib.mkForce {
         greeting_msg = "Welcome back spikely!";
       };
     };
@@ -193,11 +213,6 @@
  
   environment.variables.EDITOR = "vim";
 
-  # Enable Hyprland
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
   #environment.sessionVariables.NIXOS_OZONE_WL = "1";  # enable apps use xwayland, fix for fcitx
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
