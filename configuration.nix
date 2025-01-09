@@ -58,6 +58,15 @@
     theme = "${pkgs.sleek-grub-theme}";
   };
 
+   
+  # 为运行bin文件
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc
+    ];
+  };
+ 
   # 设置nix镜像保存个数
   boot.loader.systemd-boot.configurationLimit = 15;
 
@@ -135,17 +144,19 @@
     xwayland.enable = true;
   };
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = let
-        regreet = "${lib.getExe pkgs.greetd.regreet}";
-      in {
-        command = "${pkgs.hyprland}/bin/Hyprland --config ./home/desktop/dotfile/hypr/greetd-config";
-        user = "greeter";
-      };
-    };
-  };
+  # services.greetd = {
+  #   enable = true;
+  #   settings = {
+  #     default_session = let
+  #       greetd_config = pkgs.writeText "greetd_config" ''
+  #       exec = sh -c "${config.programs.regreet.package}/bin/regreet; ${pkgs.hyprland}/bin/hyprctl dispatch exit"
+  #       '';
+  #     in {
+  #       command = "${pkgs.hyprland}/bin/Hyprland --config ${greetd_config}";
+  #       user = "spikely";
+  #     };
+  #   };
+  # };
 
   programs.regreet = {
     enable = true;
@@ -203,6 +214,7 @@
      wget
      # inputs.wezterm.packages.${pkgs.system}.default
      gnumake
+     gcc
      
      overskride
          
@@ -264,5 +276,4 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   #system.stateVersion = "24.05"; # Did you read the comment?
    system.stateVersion = "24.11"; # Did you read the comment?
-
 }

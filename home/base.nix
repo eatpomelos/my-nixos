@@ -40,7 +40,14 @@
 		jq
 
 		# browser
+    # microsoft-edge
     # google-chrome
     vivaldi
+
+    # 编程相关
+    libclang
+    clang
+    # jdk11
+    
 	];
 }

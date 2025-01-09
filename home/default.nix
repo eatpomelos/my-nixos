@@ -1,4 +1,4 @@
-{ userName, ...}: {
+{ pkgs, userName, ...}: {
   imports = [
     ./base.nix
     ./shell.nix
