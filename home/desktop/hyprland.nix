@@ -17,6 +17,7 @@ in {
     hyprlock
     hypridle
     mako
+    libnotify
     tofi
 	];
 }

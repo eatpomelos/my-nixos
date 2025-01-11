@@ -43,5 +43,6 @@
       ))
     # popweb 英语读音
     mpg123
+    nixd
 	];
 }

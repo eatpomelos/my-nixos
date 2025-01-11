@@ -49,5 +49,7 @@
     clang
     # jdk11
     
+    # 屏幕背光
+    brightnessctl
 	];
 }
