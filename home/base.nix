@@ -39,10 +39,13 @@
 		# utils	
 		jq
 
+    # vlc目前在播放某些视频时有些问题，先使用mpv
+    # vlc
+    mpv
 		# browser
-    # microsoft-edge
+    microsoft-edge
     # google-chrome
-    vivaldi
+    # vivaldi
 
     # 编程相关
     libclang
@@ -51,5 +54,11 @@
     
     # 屏幕背光
     brightnessctl
+    # picom
+
+    wechat-uos
+    qq
+    
+    qemu
 	];
 }

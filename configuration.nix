@@ -105,6 +105,46 @@
     powerManagement.enable = true;
   };
 
+  # USB Automounting
+  services.gvfs.enable = true;
+  # services.udisks2.enable = true;
+  # services.devmon.enable = true;
+
+  # Enable USB Guard
+  # services.usbguard = {
+  #   enable = true;
+  #   dbus.enable = true;
+  #   implicitPolicyTarget = "block";
+  #   # FIXME: set yours pref USB devices (change {id} to your trusted USB device), use `lsusb` command (from usbutils package) to get list of all connected USB devices including integrated devices like camera, bluetooth, wifi, etc. with their IDs or just disable `usbguard`
+  #   rules = ''
+  #     allow id {id} # device 1
+  #     allow id {id} # device 2
+  #   '';
+  # };
+
+    # Enable OpenGL
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      intel-compute-runtime
+      intel-media-driver    # LIBVA_DRIVER_NAME=iHD
+      intel-vaapi-driver    # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiVdpau
+      libvdpau-va-gl
+      mesa
+      nvidia-vaapi-driver
+      nv-codec-headers-12
+    ];
+    extraPackages32 = with pkgs.pkgsi686Linux; [
+      intel-media-driver
+      intel-vaapi-driver
+      vaapiVdpau
+      mesa
+      libvdpau-va-gl
+    ];
+  };
+
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -221,6 +261,9 @@
     # icon fonts
     material-design-icons
     font-awesome
+
+     # usb
+     usbutils
   ];
  
   environment.variables.EDITOR = "vim";
