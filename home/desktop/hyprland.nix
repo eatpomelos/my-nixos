@@ -19,5 +19,13 @@ in {
     mako
     libnotify
     tofi
+
+    # screen shot
+    hyprshot
+    jq
+    grim
+    slurp
+    wl-clipboard
+    libnotify
 	];
 }

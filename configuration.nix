@@ -264,6 +264,8 @@
 
      # usb
      usbutils
+
+     xdg-user-dirs-gtk
   ];
  
   environment.variables.EDITOR = "vim";
