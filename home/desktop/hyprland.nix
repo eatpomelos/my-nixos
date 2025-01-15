@@ -27,5 +27,8 @@ in {
     slurp
     wl-clipboard
     libnotify
+
+    # PDF reader
+    zathura
 	];
 }
