@@ -26,6 +26,7 @@
 
 			modules = [
 				./configuration.nix
+				./modules/sunshine.nix
 				home-manager.nixosModules.home-manager
 				{
 					home-manager.useGlobalPkgs = true;
