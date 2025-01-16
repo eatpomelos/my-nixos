@@ -232,7 +232,6 @@
    # Enable Bluetooth
  hardware.bluetooth.enable = true;
  hardware.bluetooth.powerOnBoot = false;
-
  services.blueman.enable = true;
  
  # locate
@@ -257,11 +256,13 @@
      gcc
      
      overskride
-         
     # icon fonts
     material-design-icons
     font-awesome
 
+     # 音频编辑器
+     # audacity
+     
      # usb
      usbutils
 

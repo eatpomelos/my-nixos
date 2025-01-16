@@ -43,6 +43,29 @@
       ))
     # popweb 英语读音
     mpg123
+
+    # lsp-language-server
     nixd
+    basedpyright
+    texlab
+    lua-language-server
+    rust-analyzer
+    typescript-language-server
+    cmake-language-server
+    bash-language-server
+    clojure-lsp
+
+    # perl相关包
+    perl540
+    perl540Packages.PLS
+    perlnavigator
+    
+    # eaf dependenciesge
+    # pkg-config
+    # libinput
+    # libevdev
+    # libudev-zero
+
+    sdcv
 	];
 }
