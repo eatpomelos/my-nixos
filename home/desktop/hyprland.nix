@@ -10,6 +10,10 @@ in {
   xdg.configFile."tofi".source = config.lib.file.mkOutOfStoreSymlink tofi_configPath;
   
   home.packages = with pkgs;[
+    # 身份验证守护程序
+    hyprpolkitagent
+    # 窗口管理器，暂时未使用
+    # hyprsome
     waybar
     swaybg
     # hyprpaper

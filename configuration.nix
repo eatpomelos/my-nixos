@@ -122,7 +122,7 @@
   #   '';
   # };
 
-    # Enable OpenGL
+  # Enable OpenGL
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -255,7 +255,7 @@
  
   environment.variables.EDITOR = "vim";
 
-  #environment.sessionVariables.NIXOS_OZONE_WL = "1";  # enable apps use xwayland, fix for fcitx
+  # environment.sessionVariables.NIXOS_OZONE_WL = "1";  # enable apps use xwayland, fix for fcitx
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
   #inputmethod

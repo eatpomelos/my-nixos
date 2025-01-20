@@ -39,11 +39,11 @@
             rapidfuzz
             watchdog
             packaging
+            python-lsp-server
           ]
       ))
     # popweb 英语读音
     mpg123
-
     # lsp-language-server
     nixd
     basedpyright
@@ -54,7 +54,8 @@
     cmake-language-server
     bash-language-server
     clojure-lsp
-
+    hyprls
+    
     # perl相关包
     perl540
     perl540Packages.PLS
