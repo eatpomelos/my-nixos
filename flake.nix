@@ -27,6 +27,7 @@
 			modules = [
 				./configuration.nix
 				./modules/sunshine.nix
+				./modules/sound.nix
 				home-manager.nixosModules.home-manager
 				{
 					home-manager.useGlobalPkgs = true;
