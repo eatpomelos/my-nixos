@@ -2,11 +2,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    # include NixOS-WSL modules
-    <nixos-wsl/modules>
-  ];
-
   wsl.enable = true;
   wsl.defaultUser = "nixos";
 
@@ -35,7 +30,9 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-    # 为运行bin文件
+  # services.xserver.desktopManager.plasma5.enable = true;
+
+  # 为运行bin文件
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
@@ -49,7 +46,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 2w";
+    options = "--delete-older-than 1w";
   };
  
   nix.settings.auto-optimise-store = true;
@@ -74,28 +71,7 @@
     localuser = null;
   };
 
-  # programs.git = {
-	# 	enable = true;
-	# 	userName = "spikely";
-	# 	userEmail = "spikeluoyu@outlook.com";
-	# };
-	
-	# programs.bash = {
-	# 	enable = true;
-	# 	enableCompletion = true;
-	# };
-  
-  # 启用 starship，这是一个漂亮的 shell 提示符
-  # programs.starship = {
-  #   enable = true;
-  #   # 自定义配置
-  #   settings = {
-  #     add_newline = false;
-  #     aws.disabled = true;
-  #     gcloud.disabled = true;
-  #     line_break.disabled = true;
-  #   };
-  # };
+  programs.bash.completion.enable = true;
  
   # 启用 Flakes 特性以及配套的船新 nix 命令行工具
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -126,9 +102,13 @@
     clang
 
     # emacs相关
-    		# utils	
+    # utils	
 		ripgrep
 		fd
+    
+    # for mount
+    cifs-utils
+    sambaFull
 		emacs
 	  # emacsPackages.lsp-bridge
     # python配置
@@ -168,68 +148,68 @@
       ))
     # lsp-language-server
     nixd
-    # basedpyright
+
+    basedpyright
     texlab
     lua-language-server
-    # rust-analyzer
-    # typescript-language-server
+    rust-analyzer
+    typescript-language-server
     cmake-language-server
-    # bash-language-server
-    # clojure-lsp
-    # hyprls
+    bash-language-server
+    clojure-lsp
     
     # perl相关包
-    # perl540
-    # perl540Packages.PLS
-    # perlnavigator
+    perl540
+    perl540Packages.PLS
+    perlnavigator
     
     # eaf dependenciesge
     # pkg-config
     # libinput
     # libevdev
     # libudev-zero
-
     # sdcv
-
+    # emacs-rime
+    dbus
+    fcitx5
+    fcitx5-rime
+    librime
+    rime-data
   ];
   # 将默认编辑器设置为 vim
-  environment.variables.EDITOR = "vim";
+  # environment.variables.EDITOR = "vim";
 
+  #inputmethod
+  environment.variables = {
+    EDITOR = "vim";
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+  };
+  
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-mcbopomofo
+    ];
+  };
+  
+  # i18n.inputMethod = {
+	#   type = "fcitx5";
+	#   enable = true;
+	#   fcitx5.addons = with pkgs; [
+	# 	  rime-data
+	# 	  fcitx5-gtk
+	# 	  fcitx5-rime
+	#   ];
+  # };
+  
   # 配置fzf
-  # programs.fzf = {
-  #   enable = true;
-  #   package = pkgs.fzf;
-  #   enableBashIntegration = true;
-  #   changeDirWidgetCommand = "fd --type d";
-  #   changeDirWidgetOptions = [
-  #     "--preview 'tree -C {} | head -200'"
-  #   ];
-  #   defaultCommand = "fd --type f";
-  #   defaultOptions = [
-  #     "--height 40%"
-  #     "--border"
-  #   ];
-  #   fileWidgetCommand = "fd --type f";
-  #   fileWidgetOptions = [ "--preview 'head {}'" ];
-  #   historyWidgetOptions = [
-  #     "--sort"
-  #     "--exact"
-  #   ];
-  # };
-
-  # programs.kitty = {
-  #   enable = true;
-  #   # font.name = "Dejavu Sans";
-  #   # font.size = 10;
-  #   keybindings = {
-  #     "ctrl+c" = "copy_or_interrupt";
-  #   };
-  #   settings = {
-  #     scrollback_lines = 100000;
-  #     enable_audio_bell = false;
-  #     update_check_interval = 0;
-  #   };
-  # };
+  programs.fzf = {
+    fuzzyCompletion = true;
+    keybindings = true;
+  };
 
   networking.extraHosts = 
 	''
