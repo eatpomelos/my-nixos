@@ -51,6 +51,9 @@
  
   nix.settings.auto-optimise-store = true;
   
+
+  services.xserver.desktopManager.xfce.enable = true;
+  
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "cn";
@@ -188,22 +191,28 @@
   };
   
   i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-mcbopomofo
-    ];
+	  type = "fcitx5";
+	  enable = true;
+	  fcitx5.addons = with pkgs; [
+		  rime-data
+		  fcitx5-gtk
+		  fcitx5-rime
+	  ];
   };
-  
-  # i18n.inputMethod = {
-	#   type = "fcitx5";
-	#   enable = true;
-	#   fcitx5.addons = with pkgs; [
-	# 	  rime-data
-	# 	  fcitx5-gtk
-	# 	  fcitx5-rime
-	#   ];
-  # };
+
+  # docker config
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings = {
+      # enables pulling using containerd, which supports restarting from a partial pull
+      # https://docs.docker.com/storage/containerd/
+      "features" = {"containerd-snapshotter" = true;};
+    };
+    
+    # start dockerd on boot.
+    # This is required for containers which are created with the `--restart=always` flag to work.
+    enableOnBoot = true;
+  };
   
   # 配置fzf
   programs.fzf = {
