@@ -262,11 +262,16 @@
  i18n.inputMethod = {
 	type = "fcitx5";
 	enable = true;
-	fcitx5.addons = with pkgs; [
-		rime-data
-		fcitx5-gtk
-		fcitx5-rime
-	];
+	fcitx5 = {
+    addons = with pkgs; [
+		  rime-data
+		  fcitx5-gtk
+      fcitx5-chinese-addons
+		  fcitx5-rime
+	  ];
+    # 使用wayland前端，避免GTK_IM_MODULE 告警
+    waylandFrontend = true;
+  };
  };
 
  programs.thunar.enable = true;
