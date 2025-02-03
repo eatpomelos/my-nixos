@@ -17,20 +17,26 @@ in {
     waybar
     swaybg
     # hyprpaper
+    # 视频壁纸，但是资源貌似占用较高，这里暂时不用
     mpvpaper
     hyprlock
     hypridle
     mako
+    # notify-send 使用
     libnotify
     tofi
 
+    qt6.qtwayland
+
+    wev
     # screen shot
+    flameshot
     hyprshot
     jq
     grim
     slurp
+    # 剪切板
     wl-clipboard
-    libnotify
 
     # PDF reader
     zathura

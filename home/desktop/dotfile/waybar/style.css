@@ -21,35 +21,27 @@ window#waybar.hidden {
 }
 
 #workspaces {
-	margin-top: 6px;
-	background: rgba(16, 20, 24, 0.5);
-	transition: none;
-
-    font-size: 12px;
+  padding-left: 0px;
+  padding-right: 4px;
 }
-
 #workspaces button {
-    border: none;
-    padding: 0 10px;
-    background-color: transparent;
-    color: #ffffff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 6px;
+  padding-right: 6px;
+  background-color: rgba(181, 232, 224, 0.5);
 }
-
-#workspaces button:hover {
-    background: rgba(255, 255, 255, 0.5);
-}
-
 #workspaces button.active {
-    background: #fff9bb;
-    color: #000000;
+  background-color: rgb(181, 232, 224);
+  color: rgb(26, 24, 38);
 }
-
-#workspaces button.active:hover {
-    background: #fffcdf;
-}
-
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+  background-color: rgb(235, 50, 0);
+  color: rgb(26, 24, 38);
+}
+#workspaces button:hover {
+  background-color: rgb(248, 189, 150);
+  color: rgb(26, 24, 38);
 }
 
 #mode {
@@ -63,6 +55,7 @@ window#waybar.hidden {
 #network,
 #pulseaudio,
 #tray,
+#battery,
 #mode,
 #window {
     margin-top: 6px;
@@ -108,7 +101,24 @@ window#waybar.hidden {
 #tray {
     background-color: rgba(16, 20, 24, 0.5);
 }
-
+#battery {
+  min-width: 50px;
+  background-color: rgb(200, 186, 244);
+  color: #000000;
+}
+#battery.charging,
+#battery.full,
+#battery.plugged {
+  color: #26a65b;
+}
+#battery.critical:not(.charging) {
+  color: #f53c3c;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
 #window {
     font-family: 'Fira Mono', 'Noto Sans CJK SC', sans-serif;
     font-weight: 400;

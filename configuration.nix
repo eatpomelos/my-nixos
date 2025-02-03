@@ -164,10 +164,9 @@
   # Enable Hyprland
   programs.hyprland = {
     enable = true;
-    package = pkgs.hyprland;
     xwayland.enable = true;
   };
-
+  programs.xwayland.enable = true;
   # services.greetd = {
   #   enable = true;
   #   settings = {
