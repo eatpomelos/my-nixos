@@ -4,8 +4,8 @@
     "height": 40, 
     "spacing": 6,
     "modules-left": ["hyprland/workspaces"],
-    "modules-center": [],
-    "modules-right": ["tray", "network", "pulseaudio", "memory", "cpu", "battery", "clock"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "network", "pulseaudio", "memory", "cpu", "temperature", "battery"],
     "hyprland/workspaces": {
        "format": "{icon}",
         "on-click": "activate",
@@ -47,13 +47,21 @@
     },
     "clock": {
         "interval": 1,
-        "format": "\uf017 {:%H:%M:%S}",
+        "format": "{:%H:%M:%S}",
         "format-alt": "\uf133 {:%Y-%m-%d %H:%M:%S}"
     },
     "cpu": {
         "interval": 1,
         "format": ":{usage}%",
         "tooltip": false
+    },
+    "temperature": {
+        "critical-threshold": 90,
+        "format": "{icon}{temperatureC}°C",
+        "tooltip-format": "{temperatureC}°C",
+        "interval": 5,
+        "thermal-zone": 7,
+		"format-icons": [" ", " ", " ", " "],
     },
     "memory": {
         "interval": 1,

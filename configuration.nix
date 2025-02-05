@@ -167,16 +167,22 @@
     xwayland.enable = true;
   };
   programs.xwayland.enable = true;
+  
   # services.greetd = {
   #   enable = true;
   #   settings = {
   #     default_session = let
   #       greetd_config = pkgs.writeText "greetd_config" ''
   #       exec = sh -c "${config.programs.regreet.package}/bin/regreet; ${pkgs.hyprland}/bin/hyprctl dispatch exit"
+  #       misc {
+  #           disable_hyprland_logo = true
+  #           disable_splash_rendering = true
+  #           disable_hyprland_qtutils_check = true
+  #       }
   #       '';
   #     in {
   #       command = "${pkgs.hyprland}/bin/Hyprland --config ${greetd_config}";
-  #       user = "spikely";
+  #       user = "greeter";
   #     };
   #   };
   # };

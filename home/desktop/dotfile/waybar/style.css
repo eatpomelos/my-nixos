@@ -51,6 +51,7 @@ window#waybar.hidden {
 
 #clock,
 #cpu,
+#temperature,
 #memory,
 #network,
 #pulseaudio,
@@ -74,12 +75,23 @@ window#waybar.hidden {
 }
 
 #clock {
-    background-color: #eefff1;
-    color: #000000;
+    /* background-color: #eefff1; */
+    background-color: rgba(181, 232, 224, 0);
+    color: #FFFFFF;
 }
 
 #cpu {
     background-color: #FE968B;
+    color: #000000;
+}
+
+#temperature {
+    background-color: #D6ECF0;
+    color: #000000;
+}
+
+#temperature.critical {
+    background-color: #f53c3c;
     color: #000000;
 }
 
