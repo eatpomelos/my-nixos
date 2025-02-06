@@ -256,6 +256,8 @@
 	enable = true;
 	fcitx5 = {
     addons = with pkgs; [
+      librime
+      rime-zhwiki
 		  rime-data
 		  fcitx5-gtk
       fcitx5-chinese-addons

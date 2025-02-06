@@ -40,5 +40,7 @@ in {
 
     # PDF reader
     zathura
+    # music
+    # playerctl
 	];
 }
