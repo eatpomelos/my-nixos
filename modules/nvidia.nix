@@ -54,12 +54,13 @@
 
       # FIXME: Change the following values to the correct Bus ID values for your system!
       # More on "https://wiki.nixos.org/wiki/Nvidia#Configuring_Optimus_PRIME:_Bus_ID_Values_(Mandatory)"
+      intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
-      #intelBusId = "PCI:0:0:0";
-      amdgpuBusId = "PCI:9:0:0";
+      # amdgpuBusId = "PCI:9:0:0";
     };
   };
 
+  # 使启动菜单中多一个 nvidia-sync 选项
   # NixOS specialization named 'nvidia-sync'. Provides the ability
   # to switch the Nvidia Optimus Prime profile
   # to sync mode during the boot process, enhancing performance.
