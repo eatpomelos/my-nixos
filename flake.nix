@@ -26,6 +26,7 @@
 
 			modules = [
 				./configuration.nix
+				./modules/nvidia.nix
 				./modules/sunshine.nix
 				./modules/sound.nix
 				home-manager.nixosModules.home-manager

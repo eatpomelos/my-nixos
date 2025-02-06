@@ -92,19 +92,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # 开启英伟达显卡驱动
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia = {
-    open = false;
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/os-specific/linux/nvidia-x11/default.nix
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-    # required by most wayland compositors!
-    modesetting.enable = true;
-    powerManagement.enable = true;
-  };
-
   # USB Automounting
   services.gvfs.enable = true;
   # services.udisks2.enable = true;
