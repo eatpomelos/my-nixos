@@ -27,11 +27,6 @@
     LC_TIME = "zh_CN.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # services.xserver.desktopManager.plasma5.enable = true;
-
   # 为运行bin文件
   programs.nix-ld = {
     enable = true;
@@ -52,12 +47,34 @@
   nix.settings.auto-optimise-store = true;
   
 
-  services.xserver.desktopManager.xfce.enable = true;
+  # services.xserver.desktopManager.xfce.enable = true;
   
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "cn";
-    variant = "";
+  # Enable the X11 windowing system.
+  services.xserver = {
+    enable = true;
+    desktopManager = {
+      xterm.enable = false;
+    };             
+
+    displayManager = {
+        defaultSession = "none+i3";
+    };
+
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        # dmenu #application launcher most people use
+        i3status # gives you the default i3 status bar
+        # i3lock #default i3 screen locker
+        # i3blocks #if you are planning on using i3blocks over i3status
+     ];
+    };
+
+    # Configure keymap in X11
+    xkb = {
+      layout = "cn";
+      variant = "";
+    };
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -84,6 +101,7 @@
     vim
     wget
 
+    calc
     gnumake
     gcc
     
@@ -108,6 +126,10 @@
     # utils	
 		ripgrep
 		fd
+
+    # utils
+    curl
+    killall
     
     # for mount
     cifs-utils
