@@ -5,7 +5,7 @@
     "spacing": 6,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "network", "pulseaudio", "memory", "cpu", "temperature", "battery"],
+    "modules-right": ["tray", "pulseaudio", "memory", "cpu", "temperature", "battery"],
     "hyprland/workspaces": {
        "format": "{icon}",
         "on-click": "activate",
@@ -68,21 +68,12 @@
         "format": " {used}G",
         "tooltip": false
     },
-    "network": {
-        "interval": 1,
-        "format-wifi": " {essid} ({signalStrength}%)",
-        "format-ethernet": "\uf796 {bandwidthUpBits} {bandwidthDownBits}",
-        "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "⚠ Disconnected",
-        "tooltip-format": " {ifname} {ipaddr}/{cidr} via {gwaddr}",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    },
     "pulseaudio": {
         "scroll-step": 5,
         "format": "{icon} {volume}%",
-        "format-muted": "",
+        "format-muted": "",
         "format-bluetooth": "{icon} {volume}%",
-        "format-bluetooth-muted": " {icon}",
+        "format-bluetooth-muted": "{icon} ",
         "format-icons": {
             "headphone": " ",
             "handset-free": " ",

@@ -53,7 +53,6 @@ window#waybar.hidden {
 #cpu,
 #temperature,
 #memory,
-#network,
 #pulseaudio,
 #tray,
 #battery,
@@ -86,7 +85,7 @@ window#waybar.hidden {
 }
 
 #temperature {
-    background-color: #D6ECF0;
+    background-color: #87ddff;
     color: #000000;
 }
 
@@ -102,11 +101,6 @@ window#waybar.hidden {
 
 #pulseaudio {
     background-color: #b0f5e5;
-    color: #000000;
-}
-
-#network {
-    background-color: #87ddff;
     color: #000000;
 }
 

@@ -206,8 +206,10 @@
   nixpkgs.config.allowUnfree = true;
 
    # Enable Bluetooth
- hardware.bluetooth.enable = true;
- hardware.bluetooth.powerOnBoot = false;
+ hardware.bluetooth = {
+   enable = true;
+   powerOnBoot = true;
+ };
  services.blueman.enable = true;
  
  # locate
@@ -243,6 +245,9 @@
      usbutils
 
      xdg-user-dirs-gtk
+
+     # 网络连接前端
+     networkmanagerapplet
   ];
  
   environment.variables.EDITOR = "vim";
@@ -268,6 +273,7 @@
   };
  };
 
+ # 文件资源管理器
  programs.thunar.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are

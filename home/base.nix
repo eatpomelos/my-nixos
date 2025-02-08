@@ -62,5 +62,7 @@
     qq
     
     qemu
+    # 图片浏览器
+    gthumb
 	];
 }
