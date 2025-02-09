@@ -19,6 +19,8 @@ in {
     # hyprpaper
     # 视频壁纸，但是资源貌似占用较高，这里暂时不用
     mpvpaper
+    ffmpeg
+    
     hyprlock
     hypridle
     mako

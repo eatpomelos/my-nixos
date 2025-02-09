@@ -58,7 +58,7 @@
     theme = "${pkgs.sleek-grub-theme}";
   };
 
-   
+  
   # 为运行bin文件
   programs.nix-ld = {
     enable = true;
@@ -66,7 +66,7 @@
       stdenv.cc.cc
     ];
   };
- 
+  
   # 设置nix镜像保存个数
   boot.loader.systemd-boot.configurationLimit = 15;
 
@@ -75,7 +75,7 @@
     dates = "weekly";
     options = "--delete-older-than 2w";
   };
- 
+  
   nix.settings.auto-optimise-store = true;
   
   # Enable the KDE Plasma Desktop Environment.
@@ -133,7 +133,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-    services.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.spikely = {
@@ -141,8 +141,8 @@
     description = "spikely";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    #  kate
-    #  thunderbird
+      #  kate
+      #  thunderbird
     ];
   };
 
@@ -155,70 +155,40 @@
   };
   programs.xwayland.enable = true;
   
-  # services.greetd = {
-  #   enable = true;
-  #   settings = {
-  #     default_session = let
-  #       greetd_config = pkgs.writeText "greetd_config" ''
-  #       exec = sh -c "${config.programs.regreet.package}/bin/regreet; ${pkgs.hyprland}/bin/hyprctl dispatch exit"
-  #       misc {
-  #           disable_hyprland_logo = true
-  #           disable_splash_rendering = true
-  #           disable_hyprland_qtutils_check = true
-  #       }
-  #       '';
-  #     in {
-  #       command = "${pkgs.hyprland}/bin/Hyprland --config ${greetd_config}";
-  #       user = "greeter";
-  #     };
-  #   };
-  # };
-
-  programs.regreet = {
+  services.greetd = {
     enable = true;
-    package = pkgs.greetd.regreet;
-    # theme.package = pkgs.gnome-themes-extra;
-    # theme.name = "Adwaita";
-    settings = {
-      backgroud = lib.mkForce {
-        path = "/home/spikely/spk/my-nixos/home/desktop/lock.png";
-        fit = "Fill";
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.hyprland}/bin/Hyprland";
+        user = "spikely";
       };
-      GTK = lib.mkForce {
-        cursor_theme_name = "Adwaita";
-        font_name = "Cantarell 16";
-        icon_theme_name = "Adwaita";
-        theme_name = "Adwaita";
-      };
-      appearance = lib.mkForce {
-        greeting_msg = "Welcome back spikely!";
-      };
+      default_session = initial_session;
     };
   };
 
   programs.clash-verge = {
-	enable = true;
-	package = pkgs.clash-verge-rev;
-	#package = pkgs.mihomo-party;
-	tunMode = true;
+	  enable = true;
+	  package = pkgs.clash-verge-rev;
+	  #package = pkgs.mihomo-party;
+	  tunMode = true;
   };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-   # Enable Bluetooth
- hardware.bluetooth = {
-   enable = true;
-   powerOnBoot = true;
- };
- services.blueman.enable = true;
- 
- # locate
- services.locate = {
-   enable = true;
-   package = pkgs.mlocate;
-   interval = "hourly";
-   localuser = null;
- };
+  # Enable Bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  services.blueman.enable = true;
+  
+  # locate
+  services.locate = {
+    enable = true;
+    package = pkgs.mlocate;
+    interval = "hourly";
+    localuser = null;
+  };
 
 
 
@@ -226,55 +196,56 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     # git
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget
-     # inputs.wezterm.packages.${pkgs.system}.default
-     gnumake
-     gcc
-     
-     overskride
+    # git
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    # inputs.wezterm.packages.${pkgs.system}.default
+    gnumake
+    gcc
+    
+    overskride
     # icon fonts
     material-design-icons
     font-awesome
 
-     # 音频编辑器
-     # audacity
-     
-     # usb
-     usbutils
+    # 音频编辑器
+    # audacity
+    
+    # usb
+    usbutils
 
-     xdg-user-dirs-gtk
-
-     # 网络连接前端
-     networkmanagerapplet
+    xdg-user-dirs-gtk
+    
+    # 网络连接前端
+    networkmanagerapplet
   ];
- 
+  
   environment.variables.EDITOR = "vim";
 
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";  # enable apps use xwayland, fix for fcitx
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
   #inputmethod
- i18n.inputMethod = {
-	type = "fcitx5";
-	enable = true;
-	fcitx5 = {
-    addons = with pkgs; [
-      librime
-      rime-zhwiki
-		  rime-data
-		  fcitx5-gtk
-      fcitx5-chinese-addons
-		  fcitx5-rime
-	  ];
-    # 使用wayland前端，避免GTK_IM_MODULE 告警
-    waylandFrontend = true;
+  i18n.inputMethod = {
+	  type = "fcitx5";
+	  enable = true;
+	  fcitx5 = {
+      addons = with pkgs; [
+        librime
+        rime-zhwiki
+		    rime-data
+		    fcitx5-gtk
+        fcitx5-chinese-addons
+		    fcitx5-rime
+	    ];
+      # 使用wayland前端，避免GTK_IM_MODULE 告警
+      # 禁用wayland前端，目前发现在edge浏览器中使用会导致漏字
+      # waylandFrontend = true;
+    };
   };
- };
 
- # 文件资源管理器
- programs.thunar.enable = true;
+  # 文件资源管理器
+  programs.thunar.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -296,7 +267,7 @@
   # networking.firewall.enable = false;
 
   networking.extraHosts = 
-	''
+	  ''
 		185.199.108.133 raw.githubusercontent.com
     31.209.137.10 bifrost.vivaldi.com
 	'';
@@ -308,6 +279,6 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   #system.stateVersion = "24.05"; # Did you read the comment?
-   system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 
 }
