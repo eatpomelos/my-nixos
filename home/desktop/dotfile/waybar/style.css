@@ -29,23 +29,23 @@ window#waybar.hidden {
   padding-bottom: 5px;
   padding-left: 6px;
   padding-right: 6px;
-  background-color: rgba(181, 232, 224, 0.5);
+  background-color: rgba(181, 232, 224, 0.3);
 }
 #workspaces button.active {
-  background-color: rgb(181, 232, 224);
+  background-color: rgba(181, 232, 224, 0.6);
   color: rgb(26, 24, 38);
 }
 #workspaces button.urgent {
-  background-color: rgb(235, 50, 0);
+  background-color: rgba(235, 50, 0, 0.6);
   color: rgb(26, 24, 38);
 }
 #workspaces button:hover {
-  background-color: rgb(248, 189, 150);
+  background-color: rgba(248, 189, 150, 0.6);
   color: rgb(26, 24, 38);
 }
 
 #mode {
-    background-color: #64727D;
+    background-color: rgba(100, 114, 125, 0.6);
     border-bottom: 3px solid #ffffff;
 }
 
@@ -65,51 +65,52 @@ window#waybar.hidden {
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > * {
-    margin-left: 16px;
+    /* 左边边缘间隙设置为2像素和hyprland设置对齐 */
+    margin-left: 2px;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > * {
-    margin-right: 16px;
+    /* 右边边缘间隙设置为2像素和hyprland设置对齐 */
+    margin-right: 2px;
 }
 
 #clock {
-    /* background-color: #eefff1; */
-    background-color: rgba(181, 232, 224, 0);
-    color: #FFFFFF;
+    background-color: rgba(181, 232, 224, 0.3);
+    color: #000000;
 }
 
 #cpu {
-    background-color: #FE968B;
+    background-color: rgba(254, 150, 139, 0.6);
     color: #000000;
 }
 
 #temperature {
-    background-color: #87ddff;
+    background-color: rgba(135, 221, 225, 0.6);
     color: #000000;
 }
 
 #temperature.critical {
-    background-color: #f53c3c;
+    background-color: rgba(245, 60, 60, 0.6);
     color: #000000;
 }
 
 #memory {
-    background-color: #FFEAAA;
+    background-color: rgba(255, 234, 170, 0.6);
     color: #000000;
 }
 
 #pulseaudio {
-    background-color: #b0f5e5;
+    background-color: rgba(176, 245, 229, 0.6);
     color: #000000;
 }
 
 #tray {
-    background-color: rgba(16, 20, 24, 0.5);
+    background-color: rgba(16, 20, 24, 0.6);
 }
 #battery {
   min-width: 50px;
-  background-color: rgb(200, 186, 244);
+  background-color: rgba(200, 186, 244, 0.6);
   color: #000000;
 }
 #battery.charging,
