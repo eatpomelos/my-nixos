@@ -29,6 +29,7 @@
 				  ./modules/nvidia.nix
 				  ./modules/sunshine.nix
 				  ./modules/sound.nix
+				  ./modules/llm.nix
 				  home-manager.nixosModules.home-manager
 				  {
 					  home-manager.useGlobalPkgs = true;

@@ -11,5 +11,5 @@ if [ -e $mpvpaper_file ]; then
     nice -n 19 mpvpaper -o "--no-audio --loop-playlist --panscan=1 --hwdec=auto --framedrop=vo --profile=low-latency " '*' $mpvpaper_file
 else
     # 如果不存在视频壁纸，则配置静态壁纸，静态壁纸一定存在
-    swaybg --output '*' --mode fill --image /etc/nixos/home/desktop/wallpaper1.jpg
+    swaybg --output '*' --mode fill --image /etc/nixos/home/desktop/wallpaper.png
 fi
