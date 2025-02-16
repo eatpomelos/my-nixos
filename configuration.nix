@@ -203,6 +203,7 @@
     # inputs.wezterm.packages.${pkgs.system}.default
     gnumake
     gcc
+    linuxHeaders
     
     overskride
     # icon fonts
