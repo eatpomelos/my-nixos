@@ -203,6 +203,7 @@
     # inputs.wezterm.packages.${pkgs.system}.default
     gnumake
     gcc
+    # linux内核头文件
     linuxHeaders
     
     overskride
@@ -212,6 +213,8 @@
 
     # 音频编辑器
     # audacity
+    # 图片编辑器，photoshop替代品
+    gimp
     
     # usb
     usbutils

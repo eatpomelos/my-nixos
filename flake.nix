@@ -8,9 +8,13 @@
 
 	  home-manager = {
 		  url = "github:nix-community/home-manager/release-24.11";
-
 		  inputs.nixpkgs.follows = "nixpkgs";
 	  };
+    # emacs配置，通过flake安装，但是由于emacs的配置需要单独管理，所以这里不使用这种方式安装
+    # spikemacs = {
+    #   url = "github:eatpomelos/spikemacs";
+    #   flake = false;
+    # };
   };
 
   outputs = { nixpkgs, home-manager, ...} @inputs: let
