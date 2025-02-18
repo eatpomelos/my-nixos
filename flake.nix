@@ -11,7 +11,7 @@
 		  inputs.nixpkgs.follows = "nixpkgs";
 	  };
 
-    # my wallpapers
+    # 雾凇词库，用于提升rime输入体验
     rime-ice = {
       url = "github:iDvel/rime-ice";
       flake = false;
