@@ -26,13 +26,13 @@
 			  system = "x86_64-linux";
         # 将input向下传递
         specialArgs = {
-          inherit inputs;
+          inherit inputs userName;
         };
 
 			  modules = [
 				  ./configuration.nix
 				  ./modules/nvidia.nix
-				  ./modules/input-method.nix
+				  ./modules/desktop-base.nix
 				  ./modules/sunshine.nix
 				  ./modules/sound.nix
 				  ./modules/llm.nix

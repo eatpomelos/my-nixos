@@ -14,6 +14,7 @@
   # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # 默认直接使用nixos作为主机名
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -45,6 +46,7 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  # grub配置，配置grub主题
   nixpkgs.config.packageOverrides = pkgs: {
     sleek-grub-theme = pkgs.sleek-grub-theme.override {withBanner = "Hello Spikely!";  withStyle = "bigSur"; };
   };
@@ -57,7 +59,6 @@
     fontSize = 16;
     theme = "${pkgs.sleek-grub-theme}";
   };
-
   
   # 为运行bin文件
   programs.nix-ld = {
@@ -83,58 +84,6 @@
   # services.xserver.desktopManager.plasma5.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "cn";
-    variant = "";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # USB Automounting
-  services.gvfs.enable = true;
-  # services.udisks2.enable = true;
-  # services.devmon.enable = true;
-
-  # Enable USB Guard
-  # services.usbguard = {
-  #   enable = true;
-  #   dbus.enable = true;
-  #   implicitPolicyTarget = "block";
-  #   # FIXME: set yours pref USB devices (change {id} to your trusted USB device), use `lsusb` command (from usbutils package) to get list of all connected USB devices including integrated devices like camera, bluetooth, wifi, etc. with their IDs or just disable `usbguard`
-  #   rules = ''
-  #     allow id {id} # device 1
-  #     allow id {id} # device 2
-  #   '';
-  # };
-
-  # Enable OpenGL
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      intel-compute-runtime
-      intel-media-driver    # LIBVA_DRIVER_NAME=iHD
-      intel-vaapi-driver    # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      vaapiVdpau
-      libvdpau-va-gl
-      mesa
-      nvidia-vaapi-driver
-      nv-codec-headers-12
-    ];
-    extraPackages32 = with pkgs.pkgsi686Linux; [
-      intel-media-driver
-      intel-vaapi-driver
-      vaapiVdpau
-      mesa
-      libvdpau-va-gl
-    ];
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.spikely = {
     isNormalUser = true;
@@ -148,47 +97,8 @@
 
   # Install firefox.
   # programs.firefox.enable = true;
-  # Enable Hyprland
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-  programs.xwayland.enable = true;
-  
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland";
-        user = "spikely";
-      };
-      default_session = initial_session;
-    };
-  };
-
-  programs.clash-verge = {
-	  enable = true;
-	  package = pkgs.clash-verge-rev;
-	  #package = pkgs.mihomo-party;
-	  tunMode = true;
-  };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # Enable Bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-  services.blueman.enable = true;
-  
-  # locate
-  services.locate = {
-    enable = true;
-    package = pkgs.mlocate;
-    interval = "hourly";
-    localuser = null;
-  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # List packages installed in system profile. To search, run:
@@ -223,14 +133,10 @@
     networkmanagerapplet
   ];
   
-  environment.variables.EDITOR = "vim";
-
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";  # enable apps use xwayland, fix for fcitx
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
-  # 文件资源管理器
-  programs.thunar.enable = true;
-
+  environment.variables.EDITOR = "vim";
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
