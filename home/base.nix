@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, userName, ... }:
 {
   # 设置光标大小
   xresources.properties = {
@@ -29,7 +29,6 @@
     };
   };
 
-  
   # 安装一些基础的包
  	home.packages = with pkgs;[
 		neofetch

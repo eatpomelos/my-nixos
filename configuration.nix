@@ -190,8 +190,6 @@
     localuser = null;
   };
 
-
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -230,25 +228,6 @@
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";  # enable apps use xwayland, fix for fcitx
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
-  #inputmethod
-  i18n.inputMethod = {
-	  type = "fcitx5";
-	  enable = true;
-	  fcitx5 = {
-      addons = with pkgs; [
-        librime
-        rime-zhwiki
-		    rime-data
-		    fcitx5-gtk
-        fcitx5-chinese-addons
-		    fcitx5-rime
-	    ];
-      # 使用wayland前端，避免GTK_IM_MODULE 告警
-      # 禁用wayland前端，目前发现在edge浏览器中使用会导致漏字
-      # waylandFrontend = true;
-    };
-  };
-
   # 文件资源管理器
   programs.thunar.enable = true;
 
@@ -283,7 +262,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  #system.stateVersion = "24.05"; # Did you read the comment?
-  system.stateVersion = "24.11"; # Did you read the comment?
-
+  system.stateVersion = "24.05"; # Did you read the comment?
 }
