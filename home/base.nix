@@ -8,7 +8,7 @@
 
 	programs.git = {
 		enable = true;
-		userName = "spikely";
+		userName = "${userName}";
 		userEmail = "spikeluoyu@outlook.com";
 	};
 	

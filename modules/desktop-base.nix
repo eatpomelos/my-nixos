@@ -32,7 +32,7 @@
     settings = rec {
       initial_session = {
         command = "${pkgs.hyprland}/bin/Hyprland";
-        user = "spikely";
+        user = "${userName}";
       };
       default_session = initial_session;
     };
@@ -66,7 +66,7 @@
     };
   };
 
-  system.activationScripts.installCaddyWallpapers = ''
+  system.activationScripts.installRime-ice = ''
     ${pkgs.rsync}/bin/rsync -avz --chmod=D2777,F777 ${inputs.rime-ice}/ /home/${userName}/.local/share/fcitx5/rime
   '';
   
