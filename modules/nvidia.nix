@@ -20,7 +20,7 @@
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = true;
+    powerManagement.finegrained = false;
 
     # Dynamic Boost. It is a technology found in NVIDIA Max-Q design laptops with RTX GPUs.
     # It intelligently and automatically shifts power between
@@ -48,9 +48,10 @@
     # usually from Intel, for lightweight tasks to save power,
     # and the discrete Nvidia GPU for performance-intensive tasks.
     prime = {
+      sync.enable = true;
       offload = {
-        enable = true;
-        enableOffloadCmd = true;
+        enable = false;
+        enableOffloadCmd = false;
       };
 
       # FIXME: Change the following values to the correct Bus ID values for your system!
@@ -61,25 +62,20 @@
     };
   };
 
-  # 使启动菜单中多一个 nvidia-sync 选项
-  # NixOS specialization named 'nvidia-sync'. Provides the ability
-  # to switch the Nvidia Optimus Prime profile
-  # to sync mode during the boot process, enhancing performance.
+  # 使启动菜单中多一个 nvidia-offload 选项，开启offload模式
   specialisation = {
-    nvidia-sync.configuration = {
-      system.nixos.tags = ["nvidia-sync"];
+    on-the-go.configuration = {
+      system.nixos.tags = [ "nvidia-offload" ];
       hardware.nvidia = {
-        powerManagement.finegrained = lib.mkForce false;
-
-        prime.offload.enable = lib.mkForce false;
-        prime.offload.enableOffloadCmd = lib.mkForce false;
-
-        prime.sync.enable = lib.mkForce true;
+        prime.offload.enable = lib.mkForce true;
+        prime.offload.enableOffloadCmd = lib.mkForce true;
+        prime.sync.enable = lib.mkForce false;
+        powerManagement.finegrained = lib.mkForce true;
       };
     };
   };
-
-    # Enable OpenGL
+  
+  # Enable OpenGL
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
