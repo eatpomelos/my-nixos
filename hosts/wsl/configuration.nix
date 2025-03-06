@@ -28,12 +28,12 @@
   };
 
   # 为运行bin文件
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc
-    ];
-  };
+  # programs.nix-ld = {
+  #   enable = true;
+  #   libraries = with pkgs; [
+  #     stdenv.cc.cc
+  #   ];
+  # };
  
   # 设置nix镜像保存个数
   boot.loader.systemd-boot.configurationLimit = 15;
@@ -50,35 +50,35 @@
   # services.xserver.desktopManager.xfce.enable = true;
   
   # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xterm.enable = false;
-    };             
+  # s-ervices.xserver = {
+  #   enable = true;
+  #   desktopManager = {
+  #     xterm.enable = false;
+  #   };             
 
-    displayManager = {
-        defaultSession = "none+i3";
-    };
+  #   displayManager = {
+  #       defaultSession = "none+i3";
+  #   };
 
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        # dmenu #application launcher most people use
-        i3status # gives you the default i3 status bar
-        # i3lock #default i3 screen locker
-        # i3blocks #if you are planning on using i3blocks over i3status
-     ];
-    };
+  #   windowManager.i3 = {
+  #     enable = true;
+  #     extraPackages = with pkgs; [
+  #       # dmenu #application launcher most people use
+  #       i3status # gives you the default i3 status bar
+  #       # i3lock #default i3 screen locker
+  #       # i3blocks #if you are planning on using i3blocks over i3status
+  #    ];
+  #   };
 
-    # Configure keymap in X11
-    xkb = {
-      layout = "cn";
-      variant = "";
-    };
-  };
+  #   # Configure keymap in X11
+  #   xkb = {
+  #     layout = "cn";
+  #     variant = "";
+  #   };
+  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
+  # services.libinput.enable = true;
   
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -101,14 +101,14 @@
     vim
     wget
 
-    calc
+    # calc
     gnumake
     gcc
     
-    overskride
+    # overskride
     # icon fonts
-    material-design-icons
-    font-awesome
+    # material-design-icons
+    # font-awesome
 
     # home包
 		neofetch
@@ -132,7 +132,7 @@
     killall
     
     # for mount
-    cifs-utils
+    # cifs-utils
     sambaFull
 		emacs
 	  # emacsPackages.lsp-bridge
@@ -195,7 +195,7 @@
     # libudev-zero
     # sdcv
     # emacs-rime
-    dbus
+    # dbus
     fcitx5
     fcitx5-rime
     librime
@@ -254,6 +254,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  # system.stateVersion = "24.05"; # Did you read the comment?
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 }
