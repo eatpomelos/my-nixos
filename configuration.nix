@@ -157,7 +157,7 @@
   # networking.firewall.enable = false;
 
   networking.extraHosts = 
-	  ''
+    ''
 		185.199.108.133 raw.githubusercontent.com
     31.209.137.10 bifrost.vivaldi.com
 	'';

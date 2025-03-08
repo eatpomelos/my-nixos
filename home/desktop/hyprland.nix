@@ -33,6 +33,9 @@ in {
     wev
     # screen shot
     flameshot
+    # flameshot = callPackage inputs.nixpkgs.pkgs.flameshot { enableWlrSupport = true; };
+    # (pkgs.callPackage "${pkgs.flameshot}/package.nix" { enableWlrSupport = true; })
+
     hyprshot
     jq
     grim
