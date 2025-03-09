@@ -34,5 +34,6 @@
   environment.systemPackages = with pkgs; [
     # 用于串流到其他PC
     moonlight-qt
+    scrcpy
   ];
 }

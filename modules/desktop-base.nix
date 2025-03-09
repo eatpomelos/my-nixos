@@ -69,7 +69,7 @@
   system.activationScripts.installRime-ice = ''
     ${pkgs.rsync}/bin/rsync -avz --chmod=D2777,F777 ${inputs.rime-ice}/ /home/${userName}/.local/share/fcitx5/rime
   '';
-  
+
  # 文件资源管理器
  programs.thunar.enable = true;
 
