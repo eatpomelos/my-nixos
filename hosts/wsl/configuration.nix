@@ -8,7 +8,14 @@
   # 自定义配置
   # Enable networking
   networking.networkmanager.enable = true;
+  wsl.wslConf.network.generateHosts = false;
 
+  systemd.network.wait-online.enable = false;
+  boot.initrd.systemd.network.wait-online.enable = false;
+
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 22 80 3000 222];
+  networking.firewall.allowedUDPPorts = [ 53 3000 22 222];
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
@@ -27,14 +34,6 @@
     LC_TIME = "zh_CN.UTF-8";
   };
 
-  # 为运行bin文件
-  # programs.nix-ld = {
-  #   enable = true;
-  #   libraries = with pkgs; [
-  #     stdenv.cc.cc
-  #   ];
-  # };
- 
   # 设置nix镜像保存个数
   boot.loader.systemd-boot.configurationLimit = 15;
 
@@ -50,35 +49,17 @@
   # services.xserver.desktopManager.xfce.enable = true;
   
   # Enable the X11 windowing system.
-  # s-ervices.xserver = {
-  #   enable = true;
-  #   desktopManager = {
-  #     xterm.enable = false;
-  #   };             
-
-  #   displayManager = {
-  #       defaultSession = "none+i3";
-  #   };
-
-  #   windowManager.i3 = {
-  #     enable = true;
-  #     extraPackages = with pkgs; [
-  #       # dmenu #application launcher most people use
-  #       i3status # gives you the default i3 status bar
-  #       # i3lock #default i3 screen locker
-  #       # i3blocks #if you are planning on using i3blocks over i3status
-  #    ];
-  #   };
-
-  #   # Configure keymap in X11
-  #   xkb = {
-  #     layout = "cn";
-  #     variant = "";
-  #   };
-  # };
+  services.xserver = {
+    enable = true;
+    # Configure keymap in X11
+    xkb = {
+      layout = "cn";
+      variant = "";
+    };
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
+  services.libinput.enable = true;
   
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

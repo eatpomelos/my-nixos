@@ -16,6 +16,7 @@
         modules = [
           ./configuration.nix
           nixos-wsl.nixosModules.wsl
+          ../../modules/gitea.nix
         ];
       };
     };
