@@ -1,2 +1,2 @@
-# my-nixos
+# my-nixos conf
 
