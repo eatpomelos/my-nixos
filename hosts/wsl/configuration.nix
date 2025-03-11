@@ -7,8 +7,8 @@
 
   # 自定义配置
   # Enable networking
-  networking.networkmanager.enable = true;
-  wsl.wslConf.network.generateHosts = false;
+  # networking.networkmanager.enable = true;
+  # wsl.wslConf.network.generateHosts = false;
 
   systemd.network.wait-online.enable = false;
   boot.initrd.systemd.network.wait-online.enable = false;
@@ -72,9 +72,16 @@
     localuser = null;
   };
 
-  programs.bash.completion.enable = true;
+  programs.bash = let
+    envExtra = ''
+        export PATH="$PATH:/home/nixos/spk/code/my_scripts"
+    '';
+  in {
+    completion.enable = true;
+    loginShellInit = envExtra;
+  };
  
-  # 启用 Flakes 特性以及配套的船新 nix 命令行工具
+  # 启用 Flakes 特性以及配套的 nix 命令行工具
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
     # Flakes 通过 git 命令拉取其依赖项，所以必须先安装好 git
@@ -227,7 +234,7 @@
 
   networking.extraHosts = 
 	''
-		185.199.108.133 raw.githubusercontent.com
+    185.199.108.133 raw.githubusercontent.com
     31.209.137.10 bifrost.vivaldi.com
 	'';
 
