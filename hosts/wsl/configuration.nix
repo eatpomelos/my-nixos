@@ -13,9 +13,9 @@
   systemd.network.wait-online.enable = false;
   boot.initrd.systemd.network.wait-online.enable = false;
 
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 22 80 3000 222];
-  networking.firewall.allowedUDPPorts = [ 53 3000 22 222];
+  # networking.firewall.enable = true;
+  # networking.firewall.allowedTCPPorts = [ 22 80 3000 222];
+  # networking.firewall.allowedUDPPorts = [ 53 3000 22 222];
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
@@ -168,6 +168,9 @@
     perl540
     perl540Packages.PLS
     perlnavigator
+    
+    # docker support
+    docker-compose
     
     # eaf dependenciesge
     # pkg-config
