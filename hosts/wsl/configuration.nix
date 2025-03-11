@@ -96,21 +96,21 @@
    # font-awesome
 
     # home包
-		neofetch
+    neofetch
     
     # 文泉驿字体，后面的终端以及emacs都会用到
     # wqy_zenhei
     
     # utils	
-		jq
+    jq
 
     libclang
     clang
 
     # emacs相关
-    # utils	
-		ripgrep
-		fd
+    # utils
+    ripgrep
+    fd
 
     # utils
     curl
@@ -119,8 +119,8 @@
     # for mount
     # cifs-utils
     sambaFull
-		emacs
-	  # emacsPackages.lsp-bridge
+    emacs
+    # emacsPackages.lsp-bridge
     # python配置
     pyright
     (python311.withPackages (
@@ -158,16 +158,15 @@
       ))
     # lsp-language-server
     nixd
-
     basedpyright
     texlab
     lua-language-server
     rust-analyzer
     typescript-language-server
     cmake-language-server
-    bash-language-server
     clojure-lsp
-    
+    hyprls
+
     # perl相关包
     perl540
     perl540Packages.PLS
@@ -175,7 +174,7 @@
     
     # docker support
     docker-compose
-    
+    sdcv
     # eaf dependenciesge
     # pkg-config
     # libinput
@@ -203,13 +202,13 @@
   };
 
   i18n.inputMethod = {
-	  type = "fcitx5";
-	  enable = true;
-	  fcitx5.addons = with pkgs; [
-		  rime-data
-		  fcitx5-gtk
-		  fcitx5-rime
-	  ];
+    type = "fcitx5";
+    enable = true;
+    fcitx5.addons = with pkgs; [
+      rime-data
+      fcitx5-gtk
+      fcitx5-rime
+    ];
   };
 
   # docker config
@@ -233,10 +232,10 @@
   };
 
   networking.extraHosts = 
-	''
+    ''
     185.199.108.133 raw.githubusercontent.com
     31.209.137.10 bifrost.vivaldi.com
-	'';
+    '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

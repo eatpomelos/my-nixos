@@ -47,5 +47,5 @@ in {
     zathura
     # music
     # playerctl
-	];
+  ];
 }

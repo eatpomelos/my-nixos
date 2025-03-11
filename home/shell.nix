@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
-	programs.bash = {
-		enable = true;
-		enableCompletion = true;
-	};
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+  };
 
   # 用kitty作为终端
   programs.kitty = {

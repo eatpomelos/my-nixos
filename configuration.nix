@@ -158,9 +158,9 @@
 
   networking.extraHosts = 
     ''
-		185.199.108.133 raw.githubusercontent.com
+    185.199.108.133 raw.githubusercontent.com
     31.209.137.10 bifrost.vivaldi.com
-	'';
+    '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
