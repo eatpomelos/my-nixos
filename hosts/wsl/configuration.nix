@@ -86,16 +86,13 @@
     gnumake
     gcc
     
-    # overskride
-    # icon fonts
-    # material-design-icons
-    # font-awesome
+   # font-awesome
 
     # home包
 		neofetch
     
     # 文泉驿字体，后面的终端以及emacs都会用到
-    wqy_zenhei
+    # wqy_zenhei
     
     # utils	
 		jq
@@ -185,8 +182,10 @@
     librime
     rime-data
   ];
-  # 将默认编辑器设置为 vim
-  # environment.variables.EDITOR = "vim";
+
+  fonts.packages = with pkgs; [
+    wqy_zenhei
+  ];
 
   #inputmethod
   environment.variables = {
@@ -195,7 +194,7 @@
     QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
   };
-  
+
   i18n.inputMethod = {
 	  type = "fcitx5";
 	  enable = true;
