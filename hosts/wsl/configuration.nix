@@ -120,6 +120,7 @@
     # cifs-utils
     sambaFull
     emacs
+    pandoc
     # emacsPackages.lsp-bridge
     # python配置
     pyright
@@ -187,6 +188,7 @@
     fcitx5-rime
     librime
     rime-data
+
   ];
 
   fonts.packages = with pkgs; [

@@ -6,6 +6,7 @@
     ripgrep
     fd
     emacs
+    pandoc
     # emacsPackages.lsp-bridge
     # python配置
     pyright
