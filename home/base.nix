@@ -63,5 +63,11 @@
     qemu
     # 图片浏览器
     gthumb
+
+    # unzip
+    unzip
+    
+    # nas 客户端
+    synology-drive-client
   ];
 }
