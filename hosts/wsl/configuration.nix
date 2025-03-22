@@ -91,6 +91,7 @@
 
     # calc
     gnumake
+    cmake
     gcc
     
    # font-awesome
@@ -189,6 +190,8 @@
     librime
     rime-data
 
+    # terminal
+    tmux
   ];
 
   fonts.packages = with pkgs; [
