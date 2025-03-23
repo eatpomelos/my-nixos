@@ -72,7 +72,7 @@
 
  # 文件资源管理器
  programs.thunar.enable = true;
-
+ services.samba.enable = true;
  # locate 提供文件快速检索能力
   services.locate = {
     enable = true;

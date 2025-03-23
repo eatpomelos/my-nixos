@@ -39,9 +39,8 @@
     jq
 
     # vlc目前在播放某些视频时有些问题，先使用mpv
-    # vlc
+    vlc
     mpv
-    smplayer
 
     # browser
     microsoft-edge
