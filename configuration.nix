@@ -110,6 +110,8 @@
     wget
     # inputs.wezterm.packages.${pkgs.system}.default
     gnumake
+    cmake
+
     gcc
     # linux内核头文件
     linuxHeaders
@@ -126,7 +128,7 @@
     
     # usb
     usbutils
-
+    
     xdg-user-dirs-gtk
 
     # 网络连接前端

@@ -91,7 +91,9 @@
 
     # calc
     gnumake
+    # for vterm
     cmake
+    libtool
     gcc
     
    # font-awesome
