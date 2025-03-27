@@ -95,6 +95,8 @@
     cmake
     libtool
     gcc
+    gdb
+    cppcheck
     
    # font-awesome
 
