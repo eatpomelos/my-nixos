@@ -2,7 +2,6 @@
   imports = [
     ./base.nix
     ./shell.nix
-    ./editors
     ./desktop
   ];
 

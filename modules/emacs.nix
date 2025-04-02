@@ -1,7 +1,13 @@
 { pkgs, ... }:
 {
-  # 安装emacs相关得到包
-  home.packages = with pkgs;[
+  services.emacs = {
+    enable = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    git nodejs wmctrl xdotool
+    # eaf-browser
+    aria 
     # utils
     ripgrep
     fd
@@ -42,6 +48,17 @@
         watchdog
         packaging
         python-lsp-server
+
+        # eaf dependenciesge
+        tld
+        lxml
+        qrcode
+        pysocks
+        pymupdf
+        pypinyin
+        psutils
+        retry
+        markdown
       ]
     ))
     # popweb 英语读音
@@ -64,11 +81,17 @@
     perlnavigator
     
     # eaf dependenciesge
-    # pkg-config
-    # libinput
-    # libevdev
-    # libudev-zero
-
+    pkg-config
+    aria
+    nodejs
+    xdotool
+    wmctrl
+    fd
+    libinput
+    libevdev
+    libudev-zero
+    
     sdcv
   ];
 }
+

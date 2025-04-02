@@ -56,6 +56,7 @@ window#waybar.hidden {
 #pulseaudio,
 #tray,
 #battery,
+#mpd,
 #mode,
 #window {
     margin-top: 6px;
@@ -73,6 +74,31 @@ window#waybar.hidden {
 .modules-right > widget:last-child > * {
     /* 右边边缘间隙设置为2像素和hyprland设置对齐 */
     margin-right: 2px;
+}
+
+#mpd {
+    background-color: rgba(181, 232, 224, 0.3);
+    color: #000000;
+}
+
+#mpd.disconnected {
+    background-color: rgba(181, 232, 224, 0.3);
+    color: #000000;
+}
+
+#mpd.stopped {
+    background-color: rgba(181, 232, 224, 0.3);
+    color: #000000;
+}
+
+#mpd.playing {
+    background-color: rgba(181, 232, 224, 0.3);
+    color: #000000;
+}
+
+#mpd.paused {
+    background-color: rgba(181, 232, 224, 0.3);
+    color: #000000;
 }
 
 #clock {

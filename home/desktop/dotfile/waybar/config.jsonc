@@ -4,8 +4,8 @@
     "height": 40, 
     "spacing": 6,
     "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["clock"],
-    "modules-right": ["tray", "pulseaudio", "memory", "cpu", "temperature", "battery"],
+    "modules-center": ["mpd"],
+    "modules-right": ["clock", "tray", "pulseaudio", "memory", "cpu", "temperature", "battery"],
     "hyprland/workspaces": {
        "format": "{icon}",
         "on-click": "activate",
@@ -26,6 +26,31 @@
     "tray": {
         "icon-size": 21,
         "spacing": 10
+    },
+    "mpd": {
+		"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+		"format-disconnected": "Disconnected ",
+		"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+		"interval": 10,
+		"consume-icons": {
+			"on": " " // Icon shows only when "consume" is on
+		},
+		"random-icons": {
+			"off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+			"on": " "
+		},
+		"repeat-icons": {
+			"on": " "
+		},
+		"single-icons": {
+			"on": "1 "
+		},
+        "state-icons": {
+            "paused": "",
+			"playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
     },
     "battery": {
 		"bat": "BAT0",
