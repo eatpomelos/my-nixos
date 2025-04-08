@@ -5,17 +5,9 @@
   wsl.enable = true;
   wsl.defaultUser = "nixos";
 
-  # 自定义配置
-  # Enable networking
-  # networking.networkmanager.enable = true;
-  # wsl.wslConf.network.generateHosts = false;
-
   systemd.network.wait-online.enable = false;
   boot.initrd.systemd.network.wait-online.enable = false;
 
-  # networking.firewall.enable = true;
-  # networking.firewall.allowedTCPPorts = [ 22 80 3000 222];
-  # networking.firewall.allowedUDPPorts = [ 53 3000 22 222];
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
@@ -98,24 +90,14 @@
     gdb
     cppcheck
     
-   # font-awesome
-
     # home包
     neofetch
-    
-    # 文泉驿字体，后面的终端以及emacs都会用到
-    # wqy_zenhei
-    
+   
     # utils	
     jq
 
     libclang
     clang
-
-    # emacs相关
-    # utils
-    ripgrep
-    fd
 
     # utils
     curl
@@ -124,75 +106,9 @@
     # for mount
     # cifs-utils
     sambaFull
-    emacs
-    pandoc
-    # emacsPackages.lsp-bridge
-    # python配置
-    pyright
-    (python311.withPackages (
-        ps:
-          with ps; [
-            ruff
-            black # python formatter
-            # debugpy
-            pyqt6
-            pyqt6-sip
-            pyqt6-webengine
-            cookies
-
-            # my commonly used python packages
-            jupyter
-            ipython
-            pandas
-            requests
-            pyquery
-            pyyaml
-            boto3
-
-            ## emacs's lsp-bridge dependenciesge
-            epc
-            orjson
-            sexpdata
-            six
-            setuptools
-            paramiko
-            rapidfuzz
-            watchdog
-            packaging
-            python-lsp-server
-          ]
-      ))
-    # lsp-language-server
-    nixd
-    basedpyright
-    texlab
-    lua-language-server
-    rust-analyzer
-    typescript-language-server
-    cmake-language-server
-    clojure-lsp
-    hyprls
-
-    # perl相关包
-    perl540
-    perl540Packages.PLS
-    perlnavigator
     
     # docker support
     docker-compose
-    sdcv
-    # eaf dependenciesge
-    # pkg-config
-    # libinput
-    # libevdev
-    # libudev-zero
-    # sdcv
-    # emacs-rime
-    # dbus
-    fcitx5
-    fcitx5-rime
-    librime
-    rime-data
 
     # terminal
     tmux
@@ -201,24 +117,6 @@
   fonts.packages = with pkgs; [
     wqy_zenhei
   ];
-
-  #inputmethod
-  environment.variables = {
-    EDITOR = "vim";
-    GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
-    XMODIFIERS = "@im=fcitx";
-  };
-
-  i18n.inputMethod = {
-    type = "fcitx5";
-    enable = true;
-    fcitx5.addons = with pkgs; [
-      rime-data
-      fcitx5-gtk
-      fcitx5-rime
-    ];
-  };
 
   # docker config
   virtualisation.docker = {
