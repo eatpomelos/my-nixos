@@ -110,6 +110,7 @@
     # docker support
     docker-compose
 
+    subversion
     # terminal
     tmux
   ];
