@@ -131,6 +131,8 @@
     
     xdg-user-dirs-gtk
 
+    # unrar
+    unrar
     # 网络连接前端
     networkmanagerapplet
   ];
