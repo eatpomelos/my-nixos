@@ -66,7 +66,7 @@
 
   programs.bash = let
     envExtra = ''
-        export PATH="$PATH:/home/nixos/spk/code/my_scripts"
+        export PATH="$PATH:/home/nixos/spk-docs/my_scripts"
     '';
   in {
     completion.enable = true;
@@ -76,40 +76,13 @@
   # 启用 Flakes 特性以及配套的 nix 命令行工具
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
-    # Flakes 通过 git 命令拉取其依赖项，所以必须先安装好 git
-    git
-    vim
-    wget
-
-    # calc
-    gnumake
-    # for vterm
-    cmake
-    libtool
-    gcc
-    gdb
-    cppcheck
-    
     # home包
     neofetch
    
-    # utils	
-    jq
-
-    libclang
-    clang
-
-    # utils
-    curl
-    killall
-    
-    # for mount
-    # cifs-utils
-    sambaFull
-    
     # docker support
     docker-compose
 
+    # svn支持
     subversion
     # terminal
     tmux
