@@ -20,6 +20,7 @@
   cppcheck
   glibc
   binutils
+  ctags
   
   # 提供内核模块管理工具
   kmod
