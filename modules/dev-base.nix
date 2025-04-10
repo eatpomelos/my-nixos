@@ -35,6 +35,12 @@
   curl
   killall
   
+  # unrar
+  unrar
+  
+  # unzip
+  unzip
+
   # for mount
   # cifs-utils
   sambaFull

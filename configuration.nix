@@ -105,14 +105,6 @@
   # $ nix search wget
 
   environment.systemPackages = with pkgs; [
-    # git
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    # inputs.wezterm.packages.${pkgs.system}.default
-    gnumake
-    cmake
-
-    gcc
     # linux内核头文件
     linuxHeaders
     
@@ -131,8 +123,6 @@
     
     xdg-user-dirs-gtk
 
-    # unrar
-    unrar
     # 网络连接前端
     networkmanagerapplet
   ];

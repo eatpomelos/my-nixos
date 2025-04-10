@@ -35,9 +35,6 @@
     # 文泉驿字体，后面的终端以及emacs都会用到
     wqy_zenhei
     
-    # utils	
-    jq
-
     # vlc目前在播放某些视频时有些问题，先使用mpv
     vlc
     mpv
@@ -45,13 +42,7 @@
     # browser
     microsoft-edge
     # google-chrome
-    # vivaldi
-
-    # 编程相关
-    libclang
-    clang
-    # jdk11
-    
+   
     # 屏幕背光
     brightnessctl
     # picom
@@ -62,9 +53,6 @@
     qemu
     # 图片浏览器
     gthumb
-
-    # unzip
-    unzip
     
     # nas 客户端
     synology-drive-client

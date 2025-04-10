@@ -33,6 +33,7 @@
 
         modules = [
           ./configuration.nix
+          ./modules/dev-base.nix
           ./modules/emacs.nix
           ./modules/nvidia.nix
           ./modules/desktop-base.nix
