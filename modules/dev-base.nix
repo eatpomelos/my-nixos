@@ -8,6 +8,11 @@
   vim
   wget
 
+  # man手册
+  man
+  man-pages
+  man-pages-posix
+  
   # 
   gnumake
   cmake
