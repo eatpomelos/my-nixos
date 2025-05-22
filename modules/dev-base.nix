@@ -45,9 +45,14 @@
   
   # unzip
   unzip
+  pkg-config
 
   # for mount
   # cifs-utils
   sambaFull
   ];
+  environment.extraInit="
+    export PKG_CONFIG_PATH=/run/current-system/sw/lib/pkgconfig:$PKG_CONFIG_PATH
+  ";
+  
 }

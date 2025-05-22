@@ -78,7 +78,8 @@
     "cpu": {
         "interval": 1,
         "format": ":{usage}%",
-        "tooltip": false
+        "tooltip": false,
+        "on-click-right": "missioncenter"
     },
     "temperature": {
         "critical-threshold": 90,

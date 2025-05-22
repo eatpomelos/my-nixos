@@ -47,6 +47,7 @@
     brightnessctl
     # picom
 
+    # chat
     wechat-uos
     qq
     
@@ -57,4 +58,32 @@
     # nas 客户端
     synology-drive-client
   ];
+
+   
+#  # 启动synology-drive from: https://discourse.nixos.org/t/automatic-program-start-up-on-login-with-xorg/34261/2
+ 
+#   systemd.user.services.synology-drive = {
+#         description = "Synology Cloud Sync";
+#         enable = true;
+#         serviceConfig.PassEnvironment = "DISPLAY";
+# #       wantedBy = ["multi-user.target"];       #afer login
+#         wantedBy = ["graphical-session.target"];
+#         partOf   = ["graphical-session.target"];
+#         path     = [ pkgs.synology-drive-client ];
+
+#         script = ''
+#                 #!/run/current-system/sw/bin/bash
+
+#                 sleep 30
+#                 cd ${pkgs.synology-drive-client}/bin && synology-drive 
+#         '';
+        
+#         serviceConfig = {
+#                 RemainAfterExit = true;
+#         };
+#   };
+  # mpv配置,启用硬件加速
+  xdg.configFile."mpv/mpv.conf".text = ''
+      hwdec=auto
+  '';
 }

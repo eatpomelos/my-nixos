@@ -37,6 +37,7 @@
           ./modules/emacs.nix
           ./modules/nvidia.nix
           ./modules/desktop-base.nix
+          ./modules/game.nix
           ./modules/wine.nix
           ./modules/sunshine.nix
           ./modules/sound.nix

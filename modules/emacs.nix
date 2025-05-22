@@ -2,6 +2,7 @@
 {
   services.emacs = {
     enable = true;
+    package = pkgs.emacs-gtk;
   };
 
   environment.systemPackages = with pkgs; [
@@ -11,7 +12,6 @@
     # utils
     ripgrep
     fd
-    emacs
     libtool
     pandoc
     # emacsPackages.lsp-bridge
@@ -59,6 +59,16 @@
         psutils
         retry
         markdown
+        pillow
+
+        # eaf-music dependenciesge
+        pytaglib
+        pillow
+        mutagen
+        certifi
+        pycryptodome
+        rsa
+        flask
       ]
     ))
     # popweb 英语读音
@@ -88,6 +98,7 @@
     wmctrl
     fd
     libinput
+    libinput-gestures
     libevdev
     libudev-zero
     

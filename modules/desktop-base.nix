@@ -18,13 +18,14 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
+  # 开启xwayland用于运行x11应用
+  programs.xwayland.enable = true;
+  
   # Enable Hyprland
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
-  # 开启xwayland用于运行x11应用
-  programs.xwayland.enable = true;
   
   # greetd守护进程，这里默认直接启动hyprland
   services.greetd = {
@@ -80,6 +81,36 @@
     interval = "hourly";
     localuser = null;
   };
+
+  # 启动synology-drive from: https://discourse.nixos.org/t/automatic-program-start-up-on-login-with-xorg/34261/2
+  # systemd.services.synology-drive = {
+  #       description = "Synology Cloud Sync";
+  #       enable = true;
+  #       # serviceConfig.PassEnvironment = "DISPLAY";
+  #       wantedBy = ["systemd-logind.target"];
+  #       path     = [ pkgs.synology-drive-client ];
+
+  #       script = ''
+  #               #!/run/current-system/sw/bin/bash
+
+  #               sleep 30
+  #               cd ${pkgs.synology-drive-client}/bin && synology-drive 
+  #       '';
+        
+  #       serviceConfig = {
+  #               RemainAfterExit = true;
+  #       };
+  # };
+
+  systemd.services.synology-drive = {
+    description = "Synology Cloud Sync";
+    after = [ "systemd-logind.target" ];  # 服务依赖的目标（如网络）
+    serviceConfig = {
+      ExecStart = "${pkgs.synology-drive-client}/bin/synology-drive";
+      RemainAfterExit = true;
+      Restart = "always";  # 如果服务崩溃时自动重启
+    };
+  }; 
 
   # Enable Bluetooth
   hardware.bluetooth = {
