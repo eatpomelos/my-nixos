@@ -63,7 +63,7 @@
       ];
       # 使用wayland前端，避免GTK_IM_MODULE 告警
       # 禁用wayland前端，目前发现在edge浏览器中使用会导致漏字
-      # waylandFrontend = true;
+      waylandFrontend = true;
     };
   };
 

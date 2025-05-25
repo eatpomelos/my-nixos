@@ -1,4 +1,4 @@
-{pkgs, userName, ...}: {
+{config, pkgs, userName, ...}: {
   # Enable sound with pipewire.
   hardware.pulseaudio = {
     enable = false;
@@ -24,7 +24,7 @@
   services.mpd = {
     enable = true;
     user = "${userName}";
-    musicDirectory = "/home/spikely/Music";
+    musicDirectory = "/home/${userName}/Music";
     extraConfig = ''
       audio_output {
         type "pipewire"
@@ -35,10 +35,19 @@
       listenAddress = "any";
     };
   };
-  
+
+  # TODO:fix 1000
+  systemd.services.mpd.environment = {
+    # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
+    # User-id must match above user. MPD will look inside this directory for the PipeWire socket. 
+    # XDG_RUNTIME_DIR = "/run/user/${toS-tring config.users.users.userName.uid}";
+    XDG_RUNTIME_DIR = "/run/user/1000";
+  };
+
   environment.systemPackages = with pkgs; [
     pamixer
     pavucontrol
+    mpc
     ncmpcpp
   ];
 }
