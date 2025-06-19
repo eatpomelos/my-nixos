@@ -39,12 +39,18 @@
     };
   };
 
-  programs.clash-verge = {
+  # programs.clash-verge = {
+  #   enable = true;
+  #   package = pkgs.clash-verge-rev;
+  #   #package = pkgs.mihomo-party;
+  #   tunMode = true;
+  # };
+
+  services.v2raya = {
     enable = true;
-    package = pkgs.clash-verge-rev;
-    #package = pkgs.mihomo-party;
-    tunMode = true;
+    package = pkgs.v2raya;
   };
+  
   
   #inputmethod
   i18n.inputMethod = {
@@ -79,7 +85,7 @@
     enable = true;
     package = pkgs.mlocate;
     interval = "hourly";
-    localuser = null;
+    # localuser = null;
   };
 
   # 启动synology-drive from: https://discourse.nixos.org/t/automatic-program-start-up-on-login-with-xorg/34261/2

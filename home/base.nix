@@ -40,8 +40,9 @@
     mpv
 
     # browser
-    microsoft-edge
+    # micrsoft-edge
     # google-chrome
+    vivaldi
    
     # 屏幕背光
     brightnessctl

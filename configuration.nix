@@ -46,39 +46,6 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # grub配置，配置grub主题
-  nixpkgs.config.packageOverrides = pkgs: {
-    sleek-grub-theme = pkgs.sleek-grub-theme.override {withBanner = "Hello Spikely!";  withStyle = "bigSur"; };
-  };
-
-  boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    efiSupport = true;
-    useOSProber = true;
-    fontSize = 16;
-    theme = "${pkgs.sleek-grub-theme}";
-  };
-  
-  # 为运行bin文件
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc
-    ];
-  };
-  
-  # 设置nix镜像保存个数
-  boot.loader.systemd-boot.configurationLimit = 15;
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 2w";
-  };
-  
-  nix.settings.auto-optimise-store = true;
-  
   # Enable the KDE Plasma Desktop Environment.
   # services.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
@@ -89,10 +56,7 @@
     isNormalUser = true;
     description = "spikely";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      #  kate
-      #  thunderbird
-    ];
+    packages = with pkgs; [];
   };
 
   # Install firefox.
@@ -103,34 +67,12 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-
   environment.systemPackages = with pkgs; [
-    # linux内核头文件
-    linuxHeaders
-    
-    overskride
-    # icon fonts
-    material-design-icons
-    font-awesome
-
-    # 音频编辑器
-    # audacity
-    # 图片编辑器，photoshop替代品
-    gimp
-    
-    # usb
-    usbutils
-    
-    xdg-user-dirs-gtk
-
-    # 网络连接前端
-    networkmanagerapplet
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    git  
+#  wget
   ];
-  
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";  # enable apps use xwayland, fix for fcitx
-  environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
-  environment.variables.EDITOR = "vim";
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -150,17 +92,11 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  networking.extraHosts = 
-    ''
-    185.199.108.133 raw.githubusercontent.com
-    31.209.137.10 bifrost.vivaldi.com
-    '';
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }
