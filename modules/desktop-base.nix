@@ -21,6 +21,12 @@
   # 开启xwayland用于运行x11应用
   programs.xwayland.enable = true;
   
+  security.sudo = {
+    enable = true;
+    extraConfig = ''
+    ${userName} ALL=(ALL) NOPASSWD: /etc/nixos/home/desktop/scripts/toggle-g-mode.sh
+    '';
+  };
   # Enable Hyprland
   programs.hyprland = {
     enable = true;

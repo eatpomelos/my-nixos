@@ -88,6 +88,7 @@
         "interval": 5,
         "thermal-zone": 7,
 		"format-icons": [" ", " ", " ", " "],
+        "on-click-right": "sudo /etc/nixos/home/desktop/scripts/toggle-g-mode.sh"
     },
     "memory": {
         "interval": 1,
