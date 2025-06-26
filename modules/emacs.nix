@@ -17,7 +17,7 @@
     # emacsPackages.lsp-bridge
     # python配置
     pyright
-    (python311.withPackages (
+    (python313.withPackages (
       ps:
       with ps; [
         ruff
@@ -102,6 +102,7 @@
     libevdev
     libudev-zero
     
+    mupdf
     sdcv
   ];
 }

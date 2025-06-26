@@ -20,7 +20,7 @@
     # media-session.enable = true;
   };
   
-  # 配置mpd，用于播放音乐
+  # # 配置mpd，用于播放音乐
   services.mpd = {
     enable = true;
     user = "${userName}";
@@ -48,6 +48,9 @@
     pamixer
     pavucontrol
     mpc
+    # TODO:这里的mpd是否还需要？
     ncmpcpp
+    # -musicfox
+    netease-cloud-music-gtk
   ];
 }

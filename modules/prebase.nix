@@ -34,7 +34,13 @@
   
   nix.settings.auto-optimise-store = true;
   
-    environment.systemPackages = with pkgs; [
+  fonts.packages = with pkgs; [
+    dejavu_fonts
+    wqy_zenhei
+    nerd-fonts.symbols-only
+  ];
+  
+  environment.systemPackages = with pkgs; [
     # linux内核头文件
     linuxHeaders
     
@@ -42,7 +48,6 @@
     # icon fonts
     material-design-icons
     font-awesome
-
     # 音频编辑器
     # audacity
     # 图片编辑器，photoshop替代品

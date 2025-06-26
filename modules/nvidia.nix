@@ -8,6 +8,15 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
 
+  # boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_10;
+  # boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
+ 
+  # 关闭开源驱动
+  boot.extraModprobeConfig = ''
+   blacklist nouveau
+   options nouveau modeset=0
+   '';
+  
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;
@@ -39,9 +48,26 @@
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
     
+    # nvidiaPersistenced = true;
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.production;
 
+    # package = let 
+    #   rcu_patch = pkgs.fetchpatch {
+    #     url = "https://github.com/gentoo/gentoo/raw/c64caf53/x11-drivers/nvidia-drivers/files/nvidia-drivers-470.223.02-gpl-pfn_valid.patch";
+    #     hash = "sha256-eZiQQp2S/asE7MfGvfe6dA/kdCvek9SYa/FFGp24dVg=";
+    #   };
+    # in config.boot.kernelPackages.nvidiaPackages.mkDriver {
+    #   version = "550.107.02";
+    #   sha256_64bit = "sha256-+XwcpN8wYCjYjHrtYx+oBhtVxXxMI02FO1ddjM5sAWg=";
+    #   sha256_aarch64 = "sha256-mVEeFWHOFyhl3TGx1xy5EhnIS/nRMooQ3+LdyGe69TQ=";
+    #   openSha256 = "sha256-Po+pASZdBaNDeu5h8sgYgP9YyFAm9ywf/8iyyAaLm+w=";
+    #   settingsSha256 = "sha256-WFZhQZB6zL9d5MUChl2kCKQ1q9SgD0JlP4CMXEwp2jE=";
+    #   persistencedSha256 = "sha256-Vz33gNYapQ4++hMqH3zBB4MyjxLxwasvLzUJsCcyY4k=";
+      
+    #   patches = [ rcu_patch ];
+    # };
+    # package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
     # Nvidia Optimus PRIME. It is a technology developed by Nvidia to optimize
     # the power consumption and performance of laptops equipped with their GPUs.
     # It seamlessly switches between the integrated graphics,
@@ -97,5 +123,4 @@
       libvdpau-va-gl
     ];
   };
-
 }
