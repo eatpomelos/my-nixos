@@ -71,6 +71,7 @@
         flask
       ]
     ))
+    # python313Packages.pymupdf
     # popweb 英语读音
     mpg123
     # lsp-language-server
@@ -85,6 +86,8 @@
     clojure-lsp
     hyprls
     
+    # mupdf
+    
     # perl相关包
     perl540
     perl540Packages.PLS
@@ -92,17 +95,11 @@
     
     # eaf dependenciesge
     pkg-config
-    aria
-    nodejs
-    xdotool
-    wmctrl
-    fd
     libinput
     libinput-gestures
     libevdev
     libudev-zero
     
-    mupdf
     sdcv
   ];
 }

@@ -10,6 +10,7 @@
 
   # boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_10;
   # boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
+  # boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_1;
  
   # 关闭开源驱动
   boot.extraModprobeConfig = ''
@@ -50,8 +51,10 @@
     
     # nvidiaPersistenced = true;
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.production;
-
+    # package = config.boot.kernelPackages.nvidiaPackages.beta;
+    # package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+    
     # package = let 
     #   rcu_patch = pkgs.fetchpatch {
     #     url = "https://github.com/gentoo/gentoo/raw/c64caf53/x11-drivers/nvidia-drivers/files/nvidia-drivers-470.223.02-gpl-pfn_valid.patch";
@@ -73,33 +76,33 @@
     # It seamlessly switches between the integrated graphics,
     # usually from Intel, for lightweight tasks to save power,
     # and the discrete Nvidia GPU for performance-intensive tasks.
-    prime = {
-      sync.enable = true;
-      offload = {
-        enable = false;
-        enableOffloadCmd = false;
-      };
+    # prime = {
+    #   sync.enable = true;
+    #   offload = {
+    #     enable = false;
+    #     enableOffloadCmd = false;
+    #   };
 
-      # FIXME: Change the following values to the correct Bus ID values for your system!
-      # More on "https://wiki.nixos.org/wiki/Nvidia#Configuring_Optimus_PRIME:_Bus_ID_Values_(Mandatory)"
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-      # amdgpuBusId = "PCI:9:0:0";
-    };
+    #   # FIXME: Change the following values to the correct Bus ID values for your system!
+    #   # More on "https://wiki.nixos.org/wiki/Nvidia#Configuring_Optimus_PRIME:_Bus_ID_Values_(Mandatory)"
+    #   intelBusId = "PCI:0:2:0";
+    #   nvidiaBusId = "PCI:1:0:0";
+    #   # amdgpuBusId = "PCI:9:0:0";
+    # };
   };
 
   # 使启动菜单中多一个 nvidia-offload 选项，开启offload模式
-  specialisation = {
-    on-the-go.configuration = {
-      system.nixos.tags = [ "nvidia-offload" ];
-      hardware.nvidia = {
-        prime.offload.enable = lib.mkForce true;
-        prime.offload.enableOffloadCmd = lib.mkForce true;
-        prime.sync.enable = lib.mkForce false;
-        powerManagement.finegrained = lib.mkForce true;
-      };
-    };
-  };
+  # specialisation = {
+  #   on-the-go.configuration = {
+  #     system.nixos.tags = [ "nvidia-offload" ];
+  #     hardware.nvidia = {
+  #       prime.offload.enable = lib.mkForce true;
+  #       prime.offload.enableOffloadCmd = lib.mkForce true;
+  #       prime.sync.enable = lib.mkForce false;
+  #       powerManagement.finegrained = lib.mkForce true;
+  #     };
+  #   };
+  # };
   
   # Enable OpenGL
   hardware.graphics = {

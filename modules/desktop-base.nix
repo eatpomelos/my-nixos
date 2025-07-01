@@ -75,7 +75,8 @@
       ];
       # 使用wayland前端，避免GTK_IM_MODULE 告警
       # 禁用wayland前端，目前发现在edge浏览器中使用会导致漏字
-      waylandFrontend = true;
+      # waylandFrontend = true;
+      waylandFrontend = false;
     };
   };
 
@@ -114,17 +115,17 @@
   #       };
   # };
 
-  systemd.services.synology-drive = {
-    description = "Synology Cloud Sync";
-    after = [ "systemd-logind.target" ];  # 服务依赖的目标（如网络）
-    serviceConfig = {
-      ExecStart = "${pkgs.synology-drive-client}/bin/synology-drive";
-      RemainAfterExit = true;
-      Restart = "always";  # 如果服务崩溃时自动重启
-    };
-  }; 
+  # systemd.services.synology-drive = {
+  #   description = "Synology Cloud Sync";
+  #   after = [ "systemd-logind.target" ];  # 服务依赖的目标（如网络）
+  #   serviceConfig = {
+  #     ExecStart = "${pkgs.synology-drive-client}/bin/synology-drive";
+  #     RemainAfterExit = true;
+  #     Restart = "always";  # 如果服务崩溃时自动重启
+  #   };
+  # }; 
 
-  # Enable Bluetooth
+  # enable Bluetooth
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
